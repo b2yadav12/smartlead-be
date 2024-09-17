@@ -94,6 +94,7 @@ export class EmailService {
     emailConfig.messagePerDay = data.messagePerDay;
     emailConfig.minTimeGap = data.minTimeGap;
     emailConfig.replyToEmail = data.replyToEmail;
+    emailConfig.useDifferentEmailForImap = data.useDifferentEmailForImap;
     emailConfig.imapHost = data.imapHost;
     emailConfig.imapPort = data.imapPort;
     emailConfig.imapEncryption = data.imapEncryption;
