@@ -42,7 +42,7 @@ export class EmailService {
       from: `${emailConfig.fromName} <${emailConfig.fromEmail}>`,
       to: data.to,
       subject: data.subject,
-      text: data.body,
+      html: data.body,
       replyTo: emailConfig.replyToEmail, // Optional field
     };
 
