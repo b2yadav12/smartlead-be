@@ -1,0 +1,67 @@
+
+enum EmailEncryptionType {
+  None
+  SSL
+  TLS
+}
+
+type EmailConfiguration {
+  id: String
+  fromName: String
+  fromEmail: String
+  username: String
+  password: String
+  smtpHost: String
+  smtpPort: Int
+  smtpEncryption: EmailEncryptionType
+  messagePerDay: Int
+  minTimeGap: Int
+  replyToEmail: String
+  useDifferentEmailForImap: Boolean
+  imapHost: String
+  imapPort: Int
+  imapEncryption: EmailEncryptionType
+}
+
+input EmailConfigurationInput {
+  id: String # Optional (only if you want to update)
+  fromName: String!
+  fromEmail: String!
+  username: String!
+  password: String!
+  smtpHost: String!
+  smtpPort: Int!
+  smtpEncryption: EmailEncryptionType!
+  messagePerDay: Int!
+  minTimeGap: Int
+  replyToEmail: String
+  useDifferentEmailForImap: Boolean
+  imapHost: String
+  imapPort: Int
+  imapEncryption: EmailEncryptionType
+}
+
+input SendEmail {
+  emailConfigId: String!
+  to: String!
+  subject: String!
+  body: String!
+}
+
+type SaveEmailConfigResponse {
+  id: String
+}
+
+type SendEmailResponse {
+  status: Boolean
+  message: String
+}
+
+type Query {
+  getEmailConfig(id: String!): EmailConfiguration
+}
+
+type Mutation {
+  saveEmailConfig(payload: EmailConfigurationInput!): EmailConfiguration
+  sendEmail(payload: SendEmail!): SendEmailResponse
+}
